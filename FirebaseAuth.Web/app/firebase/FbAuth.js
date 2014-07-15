@@ -5,7 +5,7 @@
     // provides easy use of capturing events that were emitted
     // on the $rootScope when users login and out
     var app = angular.module('firebaseAuth');
-    app.factory('FbAuth', function ($firebaseSimpleLogin, Fb, $rootScope) {
+    app.factory('FbAuth', function ($firebaseSimpleLogin, Fb, $rootScope, $window) {
         var simpleLogin = $firebaseSimpleLogin(Fb);
         return {
             getCurrentUser: function() {
@@ -26,13 +26,23 @@
             },
             onLogin: function(cb) {
                 $rootScope.$on('$firebaseSimpleLogin:login',
-                  function(e, user) {
+                  function (e, user) {
+
+                      // add a cookie for the auth token
+                      if (user) {
+                          $window.sessionStorage.firebaseAuthToken = user.firebaseAuthToken;
+                      }
+
                       cb(e, user);
                   });
             },
             onLogout: function(cb) {
                 $rootScope.$on('$firebaseSimpleLogin:logout',
-                  function(e, user) {
+                  function (e, user) {
+
+                      // remove the authToken cookie
+                      delete $window.sessionStorage.firebaseAuthToken;
+
                       cb(e, user);
                   });
             }

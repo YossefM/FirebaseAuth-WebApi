@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="City.cs" />
     <Compile Include="DecodedToken.cs" />
     <Compile Include="FbUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

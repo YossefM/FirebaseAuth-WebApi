@@ -2,10 +2,10 @@
     "use strict";
 
     var app = angular.module('firebaseAuth');
-    app.factory('LocalAuth', function ($http, $q) {
+    app.factory('Users', function ($http, $q) {
         return {
-            auth: function auth(fbUser) {
-                $http.post('api/auth', fbUser)
+            save: function saveUser(fbUser) {
+                $http.post('api/users', fbUser)
                     .success(function (e) {
                         console.log(e);
                     });

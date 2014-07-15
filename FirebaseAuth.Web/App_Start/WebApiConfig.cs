@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using FirebaseAuth.Web.Filters.Api;
 
 namespace FirebaseAuth.Web
 {
@@ -19,6 +20,11 @@ namespace FirebaseAuth.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
+            // Register JWT Filter globally
+            config.Filters.Add(new ApiExceptionHandler());
+            config.Filters.Add(new DecodeJWT());
         }
+
     }
 }

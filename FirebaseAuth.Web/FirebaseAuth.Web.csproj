@@ -94,7 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\auth\LocalAuth.js" />
+    <Content Include="app\cities\Cities.js" />
+    <Content Include="app\users\Users.js" />
     <Content Include="app\directives\loginout.js" />
     <Content Include="app\firebase\FbAuth.js" />
     <Content Include="app\controllers\MainCtrl.js" />
@@ -431,9 +432,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Api\AuthController.cs" />
+    <Compile Include="Controllers\Api\CitiesController.cs" />
+    <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\Api\DecodeJWT.cs" />
+    <Compile Include="Filters\Api\ApiExceptionHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

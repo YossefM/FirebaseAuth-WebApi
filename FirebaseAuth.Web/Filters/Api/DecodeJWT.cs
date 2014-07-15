@@ -7,6 +7,7 @@ using FirebaseAuth.Model;
 using JWT;
 using System.Web.Configuration;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace FirebaseAuth.Web.Filters.Api
 {
@@ -15,20 +16,30 @@ namespace FirebaseAuth.Web.Filters.Api
 
         public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            KeyValuePair<string, object> argument = actionContext.ActionArguments.FirstOrDefault();
+            string firebaseAuthToken = string.Empty;
+            if (actionContext.Request.Headers.Authorization != null)
+            {
+                firebaseAuthToken = actionContext.Request.Headers.Authorization.Scheme;
+            }
+            else
+            {
+                throw new HttpException((int)HttpStatusCode.Unauthorized, "Unauthorized");
+            }
             
-            var controller = actionContext.ControllerContext.Controller;
-            FbUser user = argument.Value as FbUser;
-            var token = user.firebaseAuthToken;
-            var secretKey = WebConfigurationManager.AppSettings["FirebaseSecret"];
+            string secretKey = WebConfigurationManager.AppSettings["FirebaseSecret"];
             try
             {
-                string jsonPayload = JWT.JsonWebToken.Decode(token, secretKey);
+                string jsonPayload = JWT.JsonWebToken.Decode(firebaseAuthToken, secretKey);
                 DecodedToken decodedToken = JsonConvert.DeserializeObject<DecodedToken>(jsonPayload);
+                // TODO: Check validity of decoded token
             }
-            catch (JWT.SignatureVerificationException)
+            catch (JWT.SignatureVerificationException jwtEx)
             {
-                // Error?
+                throw new HttpException((int)HttpStatusCode.Unauthorized, "Unauthorized");
+            }
+            catch (Exception ex)
+            {
+                throw new HttpException((int)HttpStatusCode.Unauthorized, "Unauthorized");
             }
 
             base.OnActionExecuting(actionContext);

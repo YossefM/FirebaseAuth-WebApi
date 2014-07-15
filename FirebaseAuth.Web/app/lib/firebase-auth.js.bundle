@@ -5,11 +5,11 @@
   <!-- ext libraries -->
   <file>/scripts/jquery-1.10.2.min.js</file>
   <file>/scripts/firebase.js</file>
-  <file>/scripts/firebase-simple-login.js</file>
   
   <!-- internal angular -->
   <file>/scripts/angular.js</file>
   <file>/scripts/angular-route.js</file>
+	<file>/scripts/angular-cookies.js</file>
   <file>/scripts/angularfire.js</file>
 
   <!-- main app -->
@@ -19,8 +19,11 @@
   <file>/app/firebase/Fb.js</file>
   <file>/app/firebase/FbAuth.js</file>
 
-  <!-- app/auth -->
-  <file>/app/auth/LocalAuth.js</file>
+  <!-- app/users -->
+  <file>/app/users/Users.js</file>
+
+  <!-- app/cities -->
+  <file>/app/cities/Cities.js</file>
   
   <!-- Controllers -->
 	<file>/app/controllers/MainCtrl.js</file>
