@@ -4,9 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using FirebaseAuth.Model;
+using JWT;
+using System.Web.Configuration;
+using Newtonsoft.Json;
+using FirebaseAuth.Web.Filters.Api;
 
 namespace FirebaseAuth.Web.Controllers.Api
 {
+
+    [DecodeJWT]
     public class AuthController : ApiController
     {
         // GET api/auth
@@ -22,9 +29,9 @@ namespace FirebaseAuth.Web.Controllers.Api
         }
 
         // POST api/auth
-        public void Post([FromBody]string value)
+        public void Post([FromBody]FbUser user)
         {
-            var s = "";
+            
         }
 
         // PUT api/auth/5

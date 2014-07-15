@@ -433,6 +433,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\Api\DecodeJWT.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -461,6 +462,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FirebaseAuth.Model\FirebaseAuth.Model.csproj">
+      <Project>{4d1daf6b-3809-4447-9f38-450e8131845b}</Project>
+      <Name>FirebaseAuth.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
