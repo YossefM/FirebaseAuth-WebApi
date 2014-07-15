@@ -1,7 +1,7 @@
 FirebaseAuth-WebApi
 ===================
 
-Using Firebase authentication with .NET Web API
+Using Firebase Simple Login to authenticate with .NET Web API
 
 This project is based off [this question from StackOverflow][1].  A more detailed explanation is provided in the answer to the question.
 
