@@ -5,7 +5,7 @@ Using Firebase authentication with .NET Web API
 
 This project is based off [this question from StackOverflow][1].  A more detailed explanation is provided in the answer to the question.
 
-## Intstalling
+## Installing
 1. Clone the Repo
 2. Open the .sln file
 3. Recover the packages from NuGet
