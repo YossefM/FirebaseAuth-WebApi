@@ -24271,16 +24271,16 @@ angular.module('ngCookies', ['ng']).
 
             FbAuth.onLogin(function (e, user) {
                 Users.save(user);
+
+                Cities.get()
+                .then(function (cities) {
+                    console.log(cities);
+                });
             });
 
             FbAuth.onLogout(function (e, user) {
                 //console.log(e, user);
             });
-
-            Cities.get()
-                .then(function (cities) {
-                    console.log(cities);
-                });
 
         });
 
