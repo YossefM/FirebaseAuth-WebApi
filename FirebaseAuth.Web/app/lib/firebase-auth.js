@@ -24114,8 +24114,6 @@ angular.module('ngCookies', ['ng']).
 
         .constant('FBURL', 'https://webapi.firebaseio.com/')
 
-        .constant('APIURL', 'http://localhost:56535/api/')
-
         .factory('authInterceptor', function ($rootScope, $q, $window) {
             return {
                 request: function (config) {
@@ -24144,7 +24142,6 @@ angular.module('ngCookies', ['ng']).
                 .otherwise('/');
             
             $httpProvider.interceptors.push('authInterceptor');
-            delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
             $httpProvider.responseInterceptors.push(function ($q) {
                 return function (promise) {
@@ -24233,17 +24230,13 @@ angular.module('ngCookies', ['ng']).
     "use strict";
 
     var app = angular.module('firebaseAuth');
-    app.factory('Users', function ($http, $q, APIURL) {
+    app.factory('Users', function ($http, $q) {
         return {
             save: function saveUser(fbUser) {
-                var deferred = $q.defer;
-
-                $http.post(APIURL + 'users', fbUser)
-                    .success(function (user) {
-                        deferred.resolve(user);
+                $http.post('api/users', fbUser)
+                    .success(function (e) {
+                        console.log(e);
                     });
-
-                return deferred.promise;
             }
         };
     });
@@ -24254,12 +24247,12 @@ angular.module('ngCookies', ['ng']).
     "use strict";
 
     var app = angular.module('firebaseAuth');
-    app.factory('Cities', function ($http, $q, APIURL) {
+    app.factory('Cities', function ($http, $q) {
         return {
             get: function getCities() {
                 var deferred = $q.defer();
 
-                $http.get(APIURL + 'cities')
+                $http.get('api/cities')
                     .success(function (data) {
                         deferred.resolve(data);
                     });
