@@ -11,7 +11,7 @@ namespace FirebaseAuth.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            
             // Handle circular references at some point
             //GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             

@@ -2,13 +2,17 @@
     "use strict";
 
     var app = angular.module('firebaseAuth');
-    app.factory('Users', function ($http, $q) {
+    app.factory('Users', function ($http, $q, APIURL) {
         return {
             save: function saveUser(fbUser) {
-                $http.post('api/users', fbUser)
-                    .success(function (e) {
-                        console.log(e);
+                var deferred = $q.defer;
+
+                $http.post(APIURL + 'users', fbUser)
+                    .success(function (user) {
+                        deferred.resolve(user);
                     });
+
+                return deferred.promise;
             }
         };
     });

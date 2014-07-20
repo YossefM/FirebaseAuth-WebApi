@@ -5,6 +5,8 @@
 
         .constant('FBURL', 'https://webapi.firebaseio.com/')
 
+        .constant('APIURL', 'http://localhost:56535/api/')
+
         .factory('authInterceptor', function ($rootScope, $q, $window) {
             return {
                 request: function (config) {
@@ -33,6 +35,7 @@
                 .otherwise('/');
             
             $httpProvider.interceptors.push('authInterceptor');
+            delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
             $httpProvider.responseInterceptors.push(function ($q) {
                 return function (promise) {
