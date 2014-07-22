@@ -15,10 +15,10 @@ namespace FirebaseAuth.Api
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             // Handle circular references at some point
-            //GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             
             // Remove XML support
-            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+            config.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

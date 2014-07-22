@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using FirebaseAuth.Model;
 using Newtonsoft.Json;
+using System.Text;
+using System.Net.Http.Headers;
 
 namespace FirebaseAuth.Api.Controllers
 {
@@ -19,9 +21,11 @@ namespace FirebaseAuth.Api.Controllers
         }
 
         // GET api/users/5
-        public string Get(int id)
+        public string Get(string id)
         {
-            return "value";
+            //HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "value");
+            //response.Content = new StringContent("hello", Encoding.Unicode);
+            return id;
         }
 
         // POST api/users
