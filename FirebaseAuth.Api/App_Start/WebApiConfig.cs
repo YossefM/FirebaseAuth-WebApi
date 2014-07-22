@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace FirebaseAuth.Api
 {
@@ -11,13 +12,13 @@ namespace FirebaseAuth.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             // Handle circular references at some point
             //GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             
             // Remove XML support
             GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
-
 
             // Web API routes
             config.MapHttpAttributeRoutes();
